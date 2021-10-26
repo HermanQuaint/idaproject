@@ -1,0 +1,326 @@
+/*
+1. Позиционирование
+2. Блочная модель
+3. Типографика
+4. Оформление
+5. Анимация
+6. Разное
+*/
+
+/* Fonts - start */
+
+/* source-sans-pro-regular - latin_cyrillic */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 400;
+  src: local(''),
+  url('../fonts/source-sans-pro-v14-latin_cyrillic-regular.woff2') format('woff2'),
+  url('../fonts/source-sans-pro-v14-latin_cyrillic-regular.woff') format('woff');
+}
+
+/* source-sans-pro-600 - latin_cyrillic */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 600;
+  src: local(''),
+  url('../fonts/source-sans-pro-v14-latin_cyrillic-600.woff2') format('woff2'),
+  url('../fonts/source-sans-pro-v14-latin_cyrillic-600.woff') format('woff');
+}
+
+/* inter-600 - latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  src: local(''),
+  url('../fonts/inter-v3-latin-600.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+  url('../fonts/inter-v3-latin-600.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+
+/* Fonts - end */
+
+
+:root {
+  --text: #3f3f3f;
+  --text-l: #ffffff;
+  --button: #7bae73;
+  --button-d: #eeeeee;
+  --accent: #ff8484;
+  --label: #49485e;
+  --input-text: #b4b4b4;
+  --input-bg: #fffefb;
+  --background: rgba(255, 254, 251, 0.8);
+
+
+}
+
+/* Global style - start*/
+
+*, *:before, *:after {
+  box-sizing: border-box
+}
+
+.page {
+  height: 100%;
+}
+
+.page,
+.page-body {
+  min-width: 320px;
+}
+
+.page-body {
+  margin: 0;
+  padding: 0;
+
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 16px;
+  line-height: 20px;
+  color: var(--text);
+
+  background-color: var(--background);
+}
+
+
+a {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.visually-hidden:not(:focus):not(:active),
+input[type="checkbox"].visually-hidden,
+input[type="radio"].visually-hidden {
+  position: absolute;
+
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+
+  white-space: nowrap;
+
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+.container {
+  margin: 0 auto;
+  padding: 0 15px;
+
+  width: auto;
+
+  @media (min-width: 768px) {
+    padding: 0 24px;
+    width: 768px;
+  }
+
+  @media (min-width: 1200px) {
+    padding: 0 30px;
+    width: 1200px;
+  }
+
+  @media (min-width: 1440px) {
+    padding: 0 30px;
+    width: 1440px;
+  }
+
+}
+
+.button {
+  display: inline-block;
+  padding: 10px;
+
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+  color: var(--text-l);
+
+  background-color: var(--button);
+  border: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.label {
+  font-size: 10px;
+  line-height: 13px;
+  letter-spacing: -0.02em;
+  color: var(--label);
+}
+
+.input, .select {
+  padding: 10px;
+  width: 100%;
+
+  font-size: 12px;
+  line-height: 15px;
+
+  background: var(--input-bg);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border: none;
+  border-radius: 4px;
+
+  &::placeholder {
+    color: var(--input-text);
+  }
+}
+
+/* Global style - end */
+
+/* header - start */
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.filter {
+  align-self: center;
+}
+
+.filter__select {
+  color: var(--input-text);
+}
+
+
+/* header - end */
+
+/* main - start */
+
+.main {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+
+  @media (min-width: 768px) {
+    grid-template-columns: 332px 1fr;
+  }
+}
+
+.form {
+  max-width: 332px;
+  width: 100%;
+  padding: 24px;
+  margin: 0 auto;
+
+  background-color: var(--input-bg);
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.04), 0 6px 10px rgba(0, 0, 0, 0.02);
+  border-radius: 4px;
+
+  &__label {
+    position: relative;
+    display: block;
+    margin: 24px 0;
+  }
+
+  &__label:first-child {
+    margin-top: 0;
+  }
+
+  &__input[required] {
+
+  }
+
+  &__button {
+    width: 100%;
+
+    &:disabled {
+      background-color: var(--button-d);
+      color: var(--input-text);
+    }
+  }
+}
+
+.label__required {
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+
+    top: 0;
+    right: -4px;
+
+    width: 4px;
+    height: 4px;
+
+    background-color: var(--accent);
+    border-radius: 50%;
+  }
+}
+
+/* list-goods - start*/
+.list-goods {
+  display: grid;
+  justify-content: center;
+  gap: 16px;
+
+  @media (min-width: 1200px) {
+    grid-template-columns: auto auto;
+  }
+  @media (min-width: 1440px) {
+    grid-template-columns: auto auto auto;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+
+    max-width: 332px;
+    width: 100%;
+    height: 423px;
+
+    background-color: var(--input-bg);
+    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.04), 0px 6px 10px rgba(0, 0, 0, 0.02);
+    border-radius: 4px;
+  }
+
+  &__item__title {
+    order: 1;
+    margin: 16px 16px 8px;
+
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 25px;
+  }
+
+  &__item__img {
+    order: 0;
+    max-width: 332px;
+    width: 100%;
+    height: 200px;
+
+    background-color: #E5E5E5;
+    border-radius: 4px 4px 0 0;
+  }
+
+  &__item__description {
+    order: 2;
+    margin: 8px 16px 8px;
+
+    font-size: 16px;
+    line-height: 20px;
+  }
+
+  &__item__price {
+    order: 3;
+    margin: 24px 16px;
+
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 30px;
+  }
+}
+
+
+/* list-goods - end*/
+
+/* main - end */
